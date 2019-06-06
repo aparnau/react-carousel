@@ -8,7 +8,7 @@ const TextSlide = ({ text }) => {
     // };
   
     return (
-      <div className="text-slide"> text </div>
+      <div className="text-slide"> {text} </div>
     );
   }
 export default TextSlide;

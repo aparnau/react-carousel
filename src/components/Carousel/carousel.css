@@ -10,7 +10,7 @@ html, body, #container, .carousel {
 }
 
 .slide-arrow {
-	color: blue;
+	color: #666666;
 	cursor: pointer;
 	font-size: 2rem;
 	position: fixed;
@@ -23,4 +23,12 @@ html, body, #container, .carousel {
 
 .slide-arrow.left {
 	left: 1rem;
+}
+
+.text-slide {
+    width: 100px;
+    height: 100px;
+    top: 0;
+    position: absolute;
+    font-size: 30px;
 }
