@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ImageSlide from "./ImageSlide";
 import Arrow from "./Arrow";
 import TextSlide from "./TextSlide";
+import ButtonSlide from "./ButtonSlide";
 
 import "./carousel.css";
 
@@ -20,13 +21,22 @@ const textVal = [
   "NISSAN MOTABILITY"
 ];
 
+const buttonText= [
+  "Discover more",
+  "Terms and conditions",
+  "Discover more",
+  "Terms and conditions",
+  "Discover more"
+];
+
 class Carousel extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       currentImageIndex: 0,
-      currentTextIndex: 0
+      currentTextIndex: 0,
+      currentButtonIndex: 0
     };
 
     this.nextSlide = this.nextSlide.bind(this);
@@ -34,31 +44,36 @@ class Carousel extends Component {
   }
 
   previousSlide() {
-    debugger
     const lastIndex = imgUrls.length - 1;
     const TextlastIndex = textVal.length - 1; 
-    const { currentImageIndex, currentTextIndex  } = this.state;
-    const shouldResetIndex = { currentImageIndex, currentTextIndex} === 0;
+    const ButtonlastIndex = buttonText.length - 1; 
+    const { currentImageIndex, currentTextIndex, currentButtonIndex  } = this.state;
+    const shouldResetIndex = { currentImageIndex, currentTextIndex, currentButtonIndex} === 0;
     const index = shouldResetIndex ? lastIndex : currentImageIndex - 1;
     const textIndex = shouldResetIndex ? TextlastIndex : currentTextIndex - 1;
+    const buttonIndex = shouldResetIndex ? ButtonlastIndex : currentButtonIndex - 1;
     this.setState({
       currentImageIndex: index,
-      currentTextIndex: textIndex
+      currentTextIndex: textIndex,
+      currentButtonIndex: buttonIndex
     });
   }
 
   nextSlide() {
-    debugger
     const lastIndex = imgUrls.length - 1;
     const TextlastIndex = textVal.length - 1; 
-    const { currentImageIndex, currentTextIndex } = this.state;
-    const shouldResetIndex = { currentImageIndex, currentTextIndex } === lastIndex;
+    const ButtonlastIndex = buttonText.length - 1; 
+
+    const { currentImageIndex, currentTextIndex, currentButtonIndex } = this.state;
+    const shouldResetIndex = { currentImageIndex, currentTextIndex, currentButtonIndex } === lastIndex;
     const index = shouldResetIndex ? 0 : currentImageIndex + 1;
     const textIndex = shouldResetIndex ? TextlastIndex : currentTextIndex + 1;
+    const buttonIndex = shouldResetIndex ? ButtonlastIndex : currentButtonIndex - 1;
 
     this.setState({
       currentImageIndex: index,
-      currentTextIndex: textIndex
+      currentTextIndex: textIndex,
+      currentButtonIndex: buttonIndex
     });
   }
 
@@ -72,7 +87,10 @@ class Carousel extends Component {
         />
 
         <ImageSlide url={imgUrls[this.state.currentImageIndex]} />
-        <TextSlide text={textVal[this.state.currentTextIndex]}/>
+        <div className="wrapper">
+          <TextSlide text={textVal[this.state.currentTextIndex]}/>
+          <ButtonSlide text={buttonText[this.state.currentTextIndex]} url="#" />
+        </div>
         <Arrow
           direction="right"
           clickFunction={this.nextSlide}

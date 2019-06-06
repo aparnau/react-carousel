@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TextSlide = ({ text }) => {
+const ButtonSlide = ({ url, text }) => {
     // const styles = {
     //   backgroundImage: `url(${url})`,
     //   backgroundSize: 'cover',
@@ -8,7 +8,7 @@ const TextSlide = ({ text }) => {
     // };
   
     return (
-      <div className="button-slide"> {text} </div>
+      <a className="button-slide" href="{url}"> {text} </a>
     );
   }
-export default TextSlide;
+export default ButtonSlide;
