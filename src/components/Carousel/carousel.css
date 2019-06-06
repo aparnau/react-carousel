@@ -26,9 +26,13 @@ html, body, #container, .carousel {
 }
 
 .text-slide {
-    width: 100px;
+	width: auto;
     height: 100px;
     top: 0;
     position: absolute;
     font-size: 30px;
+    background-color: #909090;
+    color: #fff;
+    opacity: 0.6;
+    text-transform: uppercase;
 }

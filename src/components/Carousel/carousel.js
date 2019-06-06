@@ -8,12 +8,16 @@ import "./carousel.css";
 const imgUrls = [
   "https://www-europe.nissan-cdn.net/content/dam/Nissan/gb/homepage/DEKSTOP%20RHD.png.ximg.full.hero.png",
   "https://www-europe.nissan-cdn.net/content/dam/Nissan/gb/homepage/800205_NISS_MOTABILITY_HOMEPG%20CAROUSEL%20BNR_3000x1300.jpg.ximg.c4.hero.jpg",
-  "https://www-europe.nissan-cdn.net/content/dam/Nissan/gb/homepage/001258_NISS_HOMEPG%20CAROUSEL%20BNR_3000x1300%20-%20MICRA%20N-SPORT%20-%20v2.jpg.ximg.full.hero.jpg"];
+  "https://www-europe.nissan-cdn.net/content/dam/Nissan/gb/homepage/001258_NISS_HOMEPG%20CAROUSEL%20BNR_3000x1300%20-%20MICRA%20N-SPORT%20-%20v2.jpg.ximg.full.hero.jpg",
+  "https://www-europe.nissan-cdn.net/content/dam/Nissan/gb/homepage/Nissan_Sweep_The_Nation_3000x1300_Desktop.jpg.ximg.full.hero.jpg",
+  "https://www-europe.nissan-cdn.net/content/dam/Nissan/gb/homepage/800605_NISS_DCO_HOMEPG%20CAROUSEL%20BNR_3000x1300%20-%20NAVARA%20N-GUARD%20%2B%20NIM.jpg.ximg.full.hero.jpg"];
 
 const textVal = [
-  "abx",
-  "blah",
-  "easy carousel"
+  "Nissan Leaf",
+  "Tough is the new stylish",
+  "tweet for a chance to win tickets",
+  "The future of Nissan intelligent mobility",
+  "NISSAN MOTABILITY"
 ];
 
 class Carousel extends Component {
@@ -30,6 +34,7 @@ class Carousel extends Component {
   }
 
   previousSlide() {
+    debugger
     const lastIndex = imgUrls.length - 1;
     const TextlastIndex = textVal.length - 1; 
     const { currentImageIndex, currentTextIndex  } = this.state;
@@ -43,12 +48,13 @@ class Carousel extends Component {
   }
 
   nextSlide() {
+    debugger
     const lastIndex = imgUrls.length - 1;
     const TextlastIndex = textVal.length - 1; 
     const { currentImageIndex, currentTextIndex } = this.state;
     const shouldResetIndex = { currentImageIndex, currentTextIndex } === lastIndex;
     const index = shouldResetIndex ? 0 : currentImageIndex + 1;
-    const textIndex = shouldResetIndex ? TextlastIndex : currentTextIndex - 1;
+    const textIndex = shouldResetIndex ? TextlastIndex : currentTextIndex + 1;
 
     this.setState({
       currentImageIndex: index,
